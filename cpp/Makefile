@@ -72,12 +72,11 @@ gtest_main.a : gtest-all.o gtest_main.o
 GildedRose.o : $(USER_DIR)/GildedRose.cc
 	$(CXX) -c $^
 
-GildedRoseUnitTests.o : $(USER_DIR)/GildedRoseUnitTests.cc \
-  $(GTEST_HEADERS)
+GildedRoseUnitTests.o : $(USER_DIR)/GildedRoseUnitTests.cc
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/GildedRoseUnitTests.cc
 
-GildedRose : GildedRoseUnitTests.o GildedRose.o gtest_main.a
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -pthread $^ -o $@
+GildedRose : GildedRoseUnitTests.o GildedRose.o
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lgtest_main -lgtest -pthread $^ -o $@
 
 GildedRoseTextTests.o : $(USER_DIR)/GildedRoseTextTests.cc
 	$(CXX) -c $^

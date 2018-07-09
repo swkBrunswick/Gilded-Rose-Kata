@@ -16,7 +16,7 @@ public:
 class GildedRose
 {
 public:
-    vector<Item> & items;
+    vector<Item> items;
     GildedRose(vector<Item> & items);
     
     void updateQuality();
